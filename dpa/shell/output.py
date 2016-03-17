@@ -519,7 +519,8 @@ class Output(object):
         # compute avg width of each header/column
         for header_name in self.header_names:
             total_value_width = self._value_sum[header_name]
-            avg_width = int(total_value_width / self.num_items)
+            num_items = self.num_items or 1
+            avg_width = int(total_value_width / num_items)
             full_total += self._value_max[header_name]
             avg_total += avg_width
             header_avgs[header_name] = avg_width

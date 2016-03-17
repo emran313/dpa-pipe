@@ -1,4 +1,4 @@
-#!/usr/autodesk/maya2014-x64/bin/mayapy
+#!/Applications/Autodesk/maya2016/Maya.app/Contents/bin/mayapy
 
 import sys
 

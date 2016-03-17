@@ -147,7 +147,7 @@ class ProductUpdateAction(Action):
                 print "\nUpdating: " + Style.bright + ver_spec + Style.normal
                 version = versions[ver_spec]
                 for (key, value) in data.iteritems():
-                    print "  " + key + "=" + str(value)
+                    print "  " + key + ":" + str(value)
                 version.update(**data)
 
         if self.official:
