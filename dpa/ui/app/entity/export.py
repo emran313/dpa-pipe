@@ -112,10 +112,13 @@ class EntityExportWizard(QtGui.QWizard):
             if self.session.app_name == 'mari':
                 self.session.save(archive=True)
 
-            version_action_cls = ActionRegistry().get_action('version', 'work')            
+            version_action_cls = ActionRegistry().get_action('version',
+                self.session.ptask.type)
             if not version_action_cls:
                 errors.append(
-                    "Unable to version up. Could not location version action.")
+                    "Unable to version up. Could not location version action "
+                    "for '{type}'.".format(type=self.session.ptask.type)
+                )
             else:
                 version_action = version_action_cls(
                     spec=self.session.ptask_area.spec,

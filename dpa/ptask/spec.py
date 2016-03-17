@@ -26,7 +26,7 @@ class PTaskSpec(str):
     CURRENT = '.'
     PARENT = '..'
     ROOT = '^' 
-    SEPARATOR = '='
+    SEPARATOR = ':'
     WILDCARD = '%'
     VERSION = '@'
 

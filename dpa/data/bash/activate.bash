@@ -189,7 +189,7 @@ alias dpaset='noglob _dpaset_func'
 # ----------------------------------------------------------------------------
 
 # run this function tab complete ptasks via dpaset
-# NOTE: if you decide to use something other than '=' as the spec separator,
+# NOTE: if you decide to use something other than ':' as the spec separator,
 # you'll need to modify this.
 
 _dpaset_complete () {
@@ -201,7 +201,7 @@ _dpaset_complete () {
     local word_to_match="${COMP_WORDS[COMP_CWORD]}"
     local completions="$(dpa complete ptask "$word_to_match")"
     COMPREPLY=( $(compgen -W "$completions" -- "$word_to_match") )
-    __ltrim_equal_completions "$cur"
+    __ltrim_colon_completions "$cur"
 }
 complete -o nospace -F _dpaset_complete dpaset
 

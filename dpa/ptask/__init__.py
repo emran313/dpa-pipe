@@ -116,7 +116,7 @@ class PTask(CreateMixin, GetMixin, ListMixin, UpdateMixin, RestfulObject):
     def list(cls, **filters):
 
         if not filters:
-            raise PTaskError("Must supply at least on filter for ptask list.")
+            raise PTaskError("Must supply at least one filter for ptask list.")
 
         return super(PTask, cls).list(**filters)
 

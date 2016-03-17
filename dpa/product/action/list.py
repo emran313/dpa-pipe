@@ -21,7 +21,7 @@ class ProductListAction(Action):
         parser.add_argument(
             "wild_spec", 
             nargs="?", 
-            default=".=%",
+            default=".:%",
             help="List products matching this wildcard spec. (wildcard is %%)",
         )
 
@@ -132,7 +132,7 @@ def _get_products(wild_spec):
     # the order of the supplied wildcard spec. 
 
     regex_spec = "^" + \
-        full_spec.replace(PTaskSpec.WILDCARD, "([\w=]+)?") + "$"
+        full_spec.replace(PTaskSpec.WILDCARD, "([\w:]+)?") + "$"
 
     regex_spec = re.compile(regex_spec)
 

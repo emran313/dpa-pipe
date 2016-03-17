@@ -60,8 +60,6 @@ class ProductionStatsAction(Action):
     # -----------------------------------------------------------------------------
     def _process_ptask(self, ptask):
 
-        print " PTASK: " + ptask.spec + " ..."
-
         ptask_type = ptask.type
 
         self._data.ptasks[ptask_type] += 1
@@ -70,20 +68,14 @@ class ProductionStatsAction(Action):
 
             #if ptask_ver.number > 2: continue  # speed up testing XXX
 
-            print "  VER: " + ptask_ver.spec
-
             self._data.ptask_versions[ptask_type] += 1
             
             for sub in ptask_ver.subscriptions:
-
-                print "   SUB: " + sub.product_version_spec
 
                 sub_product = sub.product_version.product
                 self._data.ptask_subscriptions[ptask_type] += 1 
 
         for product in Product.list(ptask=ptask.spec):
-
-            print "  PRODUCT: " + product.name_spec
 
             category = product.category
             self._data.ptask_products[ptask_type] += 1
@@ -91,22 +83,17 @@ class ProductionStatsAction(Action):
 
             for product_ver in product.versions:
 
-                print "   PRODUCT VER: " + product_ver.spec
-
                 self._data.ptask_product_versions[ptask_type] += 1
                 self._data.product_versions[category] += 1
         
                 for product_repr in product_ver.representations:
 
-                    print "    PRODUCT REPR: " + product_repr.spec
-                    
                     file_type = product_repr.type
                     self._data.product_representations[category] += 1
 
                     if os.path.exists(product_repr.area.path):
                         for file_name in os.listdir(product_repr.area.path):
                             if file_name.endswith(file_type):
-                                print "          FILE: " + file_name
                                 self._data.product_repr_files[category] += 1
                                 self._data.product_repr_files_by_type[file_type] += 1
 

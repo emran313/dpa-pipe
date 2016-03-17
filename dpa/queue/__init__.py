@@ -29,7 +29,7 @@ def get_unique_id(area_spec="", id_extra=None, dt=None):
     return "{u}_{t}_{s}{e}".format(
         u=current_username(),
         t=dt.strftime("%Y_%m_%d_%H_%M_%S"),
-        s=area_spec.replace('=', '_'),
+        s=area_spec.replace(':', '_'),
         e=id_extra,
     )
 

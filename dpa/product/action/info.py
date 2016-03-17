@@ -226,7 +226,7 @@ def _representations(version):
     reps = []
     for rep in version.representations:
         rep_str = rep.spec.replace(version.spec, "")
-        reps.append(rep_str.lstrip("=").rstrip("=none"))
+        reps.append(rep_str.lstrip(":").rstrip("=none"))
     
     return ",".join(reps)
 
